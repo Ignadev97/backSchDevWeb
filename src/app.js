@@ -76,6 +76,6 @@ app.post('/enviarMail', async (req, res) => {
 
 })
 
-app.listen(PORT, () => {
+app.listen(config.PORT, () => {
     console.log(`Servidor corriendo en puerto ${config.PORT}`)
 })
