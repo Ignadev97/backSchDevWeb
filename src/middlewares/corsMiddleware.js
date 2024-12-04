@@ -1,7 +1,7 @@
 import cors from 'cors'
 
 export const corsMiddleware = cors({
-    origin:`https://sch-web.vercel.app/`, 
+    origin:`http://localhost:4321`, 
     methods:['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 })
