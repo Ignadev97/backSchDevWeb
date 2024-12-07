@@ -59,7 +59,7 @@ app.post('/enviarMail', async (req, res) => {
         let mailEnviado = await enviarMail(html)
 
         if(mailEnviado){
-            res.status(200).json({mensaje:'El mail fué enviado con éxito! Muchas gracias por pornerte en contacto conmigo! Me contacaré lo más pronto posible!'})
+            res.status(200).json({mensaje:'El mail fué enviado con éxito! Muchas gracias por pornerte en contacto conmigo! Me contactaré lo más pronto posible!'})
         }
 
 
