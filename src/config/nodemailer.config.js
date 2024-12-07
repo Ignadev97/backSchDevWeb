@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
     return await transporter.sendMail(
         {
             from:`schDev ${config.DEV_EMAIL}`,
-            to:config.DEV_EMAIL, 
+            to:config.CLIENT_EMAIL, 
             html: message
         }
     )

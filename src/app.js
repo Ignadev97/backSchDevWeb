@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.post('/enviarMail', async (req, res) => {
     
-    let {remitente, mailContacto, asunto, mensaje, } = req.body
+    let {remitente, mailContacto, asunto, mensaje, recaptchaToken } = req.body
 
     if(!remitente || !mailContacto || !asunto || !mensaje )
 
