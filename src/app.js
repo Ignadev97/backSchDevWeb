@@ -24,9 +24,9 @@ app.post('/enviarMail', async (req, res) => {
             mensaje: "Faltan datos! Por favor completar todo el formulario para enviar el mensaje."
         })
 
-    // if(!recaptchaToken) {
-    //    return res.status(400).json({mensaje: `Falta captcha. Por favor tildar la opción "no soy un robot" `})
-    // }    
+    if(!recaptchaToken) {
+       return res.status(400).json({mensaje: `Falta captcha. Por favor tildar la opción "no soy un robot" `})
+    }    
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
@@ -39,20 +39,20 @@ app.post('/enviarMail', async (req, res) => {
 
     try {
 
-        // let response = await axios.post( `https://www.google.com/recaptcha/api/siteverify`, null, {
-        //     params:{
-        //         secret: config.SECRETKEY, 
-        //         response: recaptchaToken
-        //     }
-        // })
+        let response = await axios.post( `https://www.google.com/recaptcha/api/siteverify`, null, {
+            params:{
+                secret: config.SECRETKEY, 
+                response: recaptchaToken
+            }
+        })
 
-        // let {success} = response.data
+        let {success} = response.data
 
-        // if(!success){
-        //     return res.status(400).json({
-        //         mensaje: "Verificación de reCAPTCHA fallida. Por favor, inténtalo de nuevo."
-        //     });
-        // }
+        if(!success){
+            return res.status(400).json({
+                mensaje: "Verificación de reCAPTCHA fallida. Por favor, inténtalo de nuevo."
+            });
+        }
 
         let html = enviaTemplate(remitente, mailContacto, asunto, mensaje)
 
