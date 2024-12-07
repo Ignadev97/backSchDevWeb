@@ -14,6 +14,13 @@ app.use(corsMiddleware)
 // Middleware para analizar cuerpos JSON
 app.use(express.json());
 
+
+
+app.use((req, res, next) => {
+    console.log('CORS Middleware - Origen:', req.headers.origin);
+    next();  // Continuar con el siguiente middleware
+});
+
 app.post('/enviarMail', async (req, res) => {
     
     let {remitente, mailContacto, asunto, mensaje, recaptchaToken } = req.body
